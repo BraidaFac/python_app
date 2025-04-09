@@ -1,2 +1,4 @@
 pdfplumber==0.11.6
 gradio==5.23.2
+os==0.0.0
+python-multipart==0.0.15

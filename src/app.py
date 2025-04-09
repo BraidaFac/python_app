@@ -1,6 +1,6 @@
 import gradio as gr
 from logic import process_pdfs
-
+import os
 # Definir la interfaz
 def chat_interface(pdf_files):
     response = process_pdfs(pdf_files)
@@ -32,4 +32,7 @@ with gr.Blocks(css=css, theme=gr.themes.Soft()) as interface:
 
 # Lanzar la aplicación
 if __name__ == "__main__":
-    interface.launch()
+    interface.launch(
+        server_name="0.0.0.0",  # Escuchar en todas las interfaces
+        server_port=int(    os.environ.get("PORT", 7860))
+    )
