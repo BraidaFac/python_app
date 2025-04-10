@@ -26,7 +26,8 @@ def extract_tables_from_pdf(pdf_files):
    
     mensaje = "📊 RESUMEN DE TOTALES\n\n"
     for key, value in total.items():
-        mensaje += f"💰 {key.replace('\n', ' ') if '\n' in key else key}\n"
+        key_limpio = key.replace('\n', ' ') if '\n' in key else key
+        mensaje += f"💰 {key_limpio}\n"
         mensaje += f"${formato_monto(value)}\n\n"
      
 
