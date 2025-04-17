@@ -42,210 +42,149 @@ def extract_and_sum_amounts_visa_master(pdf_files):
                     for line in lines:
                         # Buscar líneas que contengan "IMPORTE NETO DE PAGOS"
                         if re.search(pattern_desc_financ_otorg, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:
                                 amount = match.group(0)
-                                print(amount)
                                 # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración
                                 try:
                                     total_desc_financ_otorg += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")
+                                    pass
                                     
                         if re.search(pattern_importe_neto_de_pagos, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración
                                 try:
                                     total_importe_neto_de_pagos += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")
+                                    pass
                          
                         if re.search(pattern_ventas_c_dto_contado, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración
                                 try:
                                     total_ventas_c_dto_contado += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")
+                                    pass
                                     
                         if re.search(pattern_arancel, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración
                                 try:
                                     total_arancel += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")
+                                    pass
                             
                         if re.search(pattern_ventas_c_dto_financiamiento, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:   
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración
                                 try:
                                     total_ventas_c_dto_financiamiento += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")                    
+                                    pass
                                     
                         if re.search(pattern_promo_cuota, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:   
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración
                                 try:
                                     total_promo_cuota += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")   
+                                    pass
                                     
                         if re.search(pattern_retencion, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:   
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración
                                 try:
                                     total_retencion += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")    
+                                    pass
                                     
                         if re.search(pattern_iva_promo_cuota, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:   
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración
                                 try:
                                     total_iva_promo_cuota += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")   
+                                    pass
                                     
                         if re.search(pattern_iva_cred_fisc, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:   
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración   
                                 try:
                                     total_iva_cred_fisc += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")   
+                                    pass
+                                    
                         if re.search(pattern_cargo_sistema_cuotas, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:      
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración      
                                 try:
                                     total_cargo_sistema_cuotas += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")   
+                                    pass
+                                    
                         if re.search(pattern_iva_ri_sist_cuotas, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:      
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
-                                cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración                     
+                                cleaned_amount = cleaned_amount.replace(",", ".")           
                                 try:
                                     total_iva_ri_sist_cuotas += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")   
+                                    pass
+                                    
                         if re.search(pattern_iva_ri_cred_fisc, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:      
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración                     
                                 try:
                                     total_iva_ri_cred_fisc += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")   
+                                    pass
+                                    
                         if re.search(pattern_iva_ri_cred_sobre_arancel, line):
-                            print("Línea encontrada:", line)  # Para depuración
-                            # Extraer el monto de la línea
                             match = re.search(amount_pattern, line)
                             if match:      
                                 amount = match.group(0)
-                                print(amount)
-                                # Limpiar el monto
                                 cleaned_amount = amount.replace("$", "").replace(" ", "").replace(".", "")
                                 cleaned_amount = cleaned_amount.replace(",", ".")
-                                print(f"Monto extraído: {amount} -> {cleaned_amount}")  # Para depuración                     
                                 try:
                                     total_iva_ri_cred_sobre_arancel += float(cleaned_amount)
                                 except ValueError:
-                                    print(f"Error al convertir: {cleaned_amount}")   
+                                    pass
                                     
-                                
 
     total_ventas = total_ventas_c_dto_financiamiento + total_ventas_c_dto_contado
     total_comisiones = total_arancel +  total_promo_cuota  + total_cargo_sistema_cuotas  + total_desc_financ_otorg
