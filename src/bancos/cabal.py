@@ -54,10 +54,19 @@ def extract_tables_from_pdf_cabal(pdf_files):
     
     movimientos = dict(sorted(movimientos.items(), key=lambda x: x[1], reverse=True))
     
+    movimientos_consolidados = {}
+    for key, value in movimientos.items():
+        if key in ["−IVA", "IVA S/ARANCEL + COSTO FINANCIERO"]:
+            if "IVA" not in movimientos_consolidados:
+                movimientos_consolidados["IVA"] = value
+            else:
+                movimientos_consolidados["IVA"] += value
+        else:
+            movimientos_consolidados[key] = value
     # Generar mensaje
     mensaje = "📊 RESUMEN DE LIQUIDACIÓN\n\n"
     
-    for concepto, valor in movimientos.items():
+    for concepto, valor in movimientos_consolidados.items():
         emoji = "💸" if valor < 0 else "💰"
         mensaje += f"{emoji} {concepto}\n"
         mensaje += f"${formato_monto(valor)}\n\n"
